@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por Que Não Podemos Deixar o Dinheiro Ser Mais Importante que Deus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue-dark: #1e2a3d;
+            --deep-blue-light: #3B5998;
+            --gold-dark: #D4AF37;
+            --gold-light: #E8C96B;
+            --creamy-white: #F5F5F0;
+            --teal-subtle: #5DADE2;
+            --text-color: #333;
+            --text-light: #F5F5F0;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--creamy-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--deep-blue-dark);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2.2rem; }
+        h4 { font-size: 1.8rem; }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--deep-blue-light);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--teal-subtle);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+            opacity: 0; /* For reveal-on-scroll */
+            transform: translateY(50px); /* For reveal-on-scroll */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-light {
+            color: var(--text-light);
+        }
+
+        .text-gold {
+            color: var(--gold-dark);
+        }
+
+        .bg-deep-blue {
+            background-color: var(--deep-blue-dark);
+            color: var(--text-light);
+        }
+
+        .bg-creamy-white {
+            background-color: var(--creamy-white);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background-color: rgba(30, 42, 61, 0.7); /* Initial transparent background */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(30, 42, 61, 0.95); /* Darker on scroll */
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--creamy-white);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .navbar-title em {
+            color: var(--gold-light);
+            font-style: normal;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--creamy-white);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--deep-blue-dark) 0%, var(--deep-blue-light) 100%);
+            /* Placeholder image if user's image is not provided or suitable */
+            /* background-image: url('data:image/jpeg;base64,...'); */ /* Base64 encoded image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(30, 42, 61, 0.8) 0%, rgba(30, 42, 61, 0.6) 50%, rgba(30, 42, 61, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--creamy-white);
+            font-weight: 700;
+        }
+
+        .hero h1 em {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: var(--creamy-white);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--gold-dark);
+            color: var(--deep-blue-dark);
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            color: var(--deep-blue-dark);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .verse-box {
+            background-color: var(--deep-blue-light);
+            color: var(--creamy-white);
+            padding: 2rem;
+            border-left: 5px solid var(--gold-dark);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .verse-box span {
+            display: block;
+            text-align: right;
+            font-size: 1rem;
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 300;
+            color: var(--gold-light);
+        }
+
+        /* Spiritual Journey Section */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .journey-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .journey-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .journey-item h4 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .journey-item h4 .roman-numeral {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin-right: 1rem;
+            line-height: 1;
+        }
+
+        .journey-item p {
+            font-size: 1rem;
+            color: var(--creamy-white);
+            text-align: left;
+        }
+
+        /* Biblical Foundations Section */
+        .foundations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .foundation-item {
+            background-color: var(--creamy-white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gold-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .foundation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .foundation-item svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            fill: var(--gold-dark);
+        }
+
+        .foundation-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--deep-blue-dark);
+        }
+
+        .foundation-item p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        /* Key Teachings Grid */
+        .teachings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .teaching-card {
+            background-color: var(--deep-blue-light);
+            color: var(--creamy-white);
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--gold-dark);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .teaching-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--deep-blue-dark);
+        }
+
+        .teaching-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold-light);
+        }
+
+        .teaching-card p {
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        /* Testimonies Section */
+        .testimonies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimony-card {
+            background-color: var(--creamy-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--gold-dark);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimony-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimony-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--deep-blue-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .testimony-card span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--deep-blue-light);
+            text-align: right;
+        }
+
+        /* What You'll Find Section */
+        .find-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .find-list ol {
+            list-style: none;
+            counter-reset: find-counter;
+            padding-left: 0;
+        }
+
+        .find-list li {
+            counter-increment: find-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: left;
+        }
+
+        .find-list li::before {
+            content: counter(find-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--gold-dark);
+            color: var(--deep-blue-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .spiritual-card {
+            background-color: var(--creamy-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--deep-blue-light);
+            text-align: center;
+        }
+
+        .spiritual-card h3 {
+            color: var(--deep-blue-dark);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .spiritual-card p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--deep-blue-dark) 0%, var(--deep-blue-light) 100%);
+            color: var(--creamy-white);
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--creamy-white);
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+        }
+
+        .final-cta .cta-button {
+            margin-bottom: 3rem;
+        }
+
+        .final-cta .blessing-verse {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .blessing-verse span {
+            display: block;
+            font-size: 1rem;
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 300;
+            color: var(--creamy-white);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--deep-blue-dark);
+            color: var(--creamy-white);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+
+        .footer .gold-text {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .footer .teal-text {
+            color: var(--teal-subtle);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            .find-grid {
+                grid-template-columns: 1.5fr 1fr;
+            }
+            .hero h1 {
+                font-size: 5.5rem;
+            }
+            .hero p {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.8rem; }
+            h4 { font-size: 1.5rem; }
+            .section { padding: 3rem 0; }
+            .hero { height: 80vh; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
+            .navbar-title { font-size: 1.2rem; }
+            .journey-item h4 .roman-numeral { font-size: 2rem; }
+            .final-cta h2 { font-size: 2.5rem; }
+            .final-cta p { font-size: 1.1rem; }
+            .final-cta .blessing-verse { font-size: 1.3rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; }
+            .journey-item h4 { font-size: 1.4rem; }
+            .journey-item h4 .roman-numeral { font-size: 1.8rem; }
+            .find-list li { padding-left: 3rem; font-size: 1rem; }
+            .find-list li::before { width: 2rem; height: 2rem; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <h1 class="navbar-title">✨ Por Que Não Podemos Deixar o Dinheiro Ser Mais Importante que <em>Deus</em></h1>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Por Que Não Podemos Deixar o Dinheiro Ser Mais Importante que <em>Deus</em></h1>
+            <p>Uma jornada de redescoberta das prioridades eternas e da verdadeira riqueza que transcende o material.</p>
+            <a href="#about" class="cta-button">Começar Minha Jornada Espiritual</a>
+        </div>
+    </header>
+
+    <section id="about" class="section bg-creamy-white">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>Sobre a Obra: Redescobrindo a Verdadeira Riqueza</h2>
+                <p>Em um mundo que incessantemente nos convida a buscar segurança e felicidade no acúmulo material, é fácil perder de vista o que realmente importa. Esta obra é um convite profundo para reavaliar nossa relação com o dinheiro, não sob uma ótica de condenação, mas de libertação e propósito divino.</p>
+                <p>Exploramos as Escrituras para entender como o dinheiro, quando mal compreendido ou idolatrado, pode se tornar um senhor tirano, afastando-nos da plenitude que só Deus pode oferecer. É um chamado para uma vida de contentamento, generosidade e dependência do Provedor de todas as coisas.</p>
+                <div class="verse-box">
+                    <p>"Ninguém pode servir a dois senhores; porque ou há de odiar um e amar o outro, ou se dedicará a um e desprezará o outro. Não podeis servir a Deus e a Mamom."</p>
+                    <span>Mateus 6:24</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <!-- Placeholder for an image or visual element related to the book's theme -->
+                <svg width="100%" height="auto" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="400" height="300" fill="var(--deep-blue-light)"/>
+                    <path d="M200 50L250 150H150L200 50Z" fill="var(--gold-dark)"/>
+                    <path d="M200 150L250 250H150L200 150Z" fill="var(--gold-light)"/>
+                    <circle cx="200" cy="150" r="30" fill="var(--creamy-white)"/>
+                    <text x="200" y="158" font-family="Cormorant Garamond" font-size="20" fill="var(--deep-blue-dark)" text-anchor="middle">FÉ</text>
+                    <text x="200" y="280" font-family="Lato" font-size="16" fill="var(--creamy-white)" text-anchor="middle">O Fundamento Inabalável</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="journey" class="section bg-deep-blue">
+        <div class="container text-center">
+            <h2 class="text-light">Sua Jornada de Libertação e Propósito</h2>
+            <p class="text-light">Explore os passos essenciais para alinhar suas finanças e seu coração à vontade de Deus.</p>
+
+            <div class="journey-grid">
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">I.</span> A Ilusão da Segurança Material</h4>
+                    <p>Desvende como a busca incessante por bens materiais pode nos aprisionar e nos afastar da verdadeira paz e segurança encontradas em Deus.</p>
+                </div>
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">II.</span> O Perigo da Ganância e da Idolatria</h4>
+                    <p>Compreenda os riscos espirituais de colocar o dinheiro no trono do coração, transformando-o em um ídolo que exige devoção e sacrifícios.</p>
+                </div>
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">III.</span> O Princípio da Mordomia Fiel</h4>
+                    <p>Aprenda a enxergar o dinheiro como um recurso divino confiado a você, para ser administrado com sabedoria, generosidade e para a glória de Deus.</p>
+                </div>
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">IV.</span> A Alegria de Dar e Servir</h4>
+                    <p>Descubra a profunda satisfação e as bênçãos que fluem de um coração generoso, que encontra propósito em abençoar o próximo e avançar o Reino.</p>
+                </div>
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">V.</span> A Paz da Dependência em Deus</h4>
+                    <p>Liberte-se da ansiedade e do medo financeiro, cultivando uma fé inabalável no Provedor que cuida de todas as suas necessidades, segundo Suas riquezas.</p>
+                </div>
+                <div class="journey-item">
+                    <h4><span class="roman-numeral">VI.</span> Construindo um Legado Eterno</h4>
+                    <p>Entenda como suas escolhas financeiras hoje podem impactar seu futuro eterno e o legado que você deixará para as próximas gerações, para a glória de Deus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="foundations" class="section bg-creamy-white">
+        <div class="container text-center">
+            <h2>Fundamentos Bíblicos para uma Vida Abundante</h2>
+            <p>Pilares da fé que transformam nossa perspectiva sobre o dinheiro e a prosperidade.</p>
+
+            <div class="foundations-grid">
+                <div class="foundation-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <h4>Deus é o Provedor</h4>
+                    <p>Reconheça que toda a provisão vem do Senhor, e não de nossas próprias forças ou recursos.</p>
+                </div>
+                <div class="foundation-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z"/>
+                    </svg>
+                    <h4>O Coração Generoso</h4>
+                    <p>Cultive um espírito de doação, pois é mais bem-aventurado dar do que receber, refletindo o caráter de Cristo.</p>
+                </div>
+                <div class="foundation-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V4C20 2.9 19.1 2 18 2ZM18 20H6V4H18V20ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9ZM12 13C11.45 13 11 12.55 11 12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12C13 12.55 12.55 13 12 13Z"/>
+                    </svg>
+                    <h4>A Sabedoria Financeira</h4>
+                    <p>Busque a sabedoria divina para gerenciar seus recursos, evitando dívidas e investindo no que tem valor eterno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachings" class="section bg-deep-blue">
+        <div class="container text-center">
+            <h2 class="text-light">Ensinamentos Chave para a Sua Vida</h2>
+            <p class="text-light">Insights transformadores que redefinirão sua perspectiva sobre o dinheiro e a fé.</p>
+
+            <div class="teachings-grid">
+                <div class="teaching-card">
+                    <h4>Dinheiro como Ferramenta, Não Senhor</h4>
+                    <p>O dinheiro deve ser um servo em suas mãos, utilizado para o bem e para a glória de Deus, e nunca um mestre que dita suas escolhas e valores.</p>
+                </div>
+                <div class="teaching-card">
+                    <h4>Contentamento em Todas as Circunstâncias</h4>
+                    <p>Aprenda a encontrar satisfação e paz em qualquer situação financeira, sabendo que sua alegria não depende do que você possui, mas de quem você é em Cristo.</p>
+                </div>
+                <div class="teaching-card">
+                    <h4>Priorizando o Reino de Deus</h4>
+                    <p>Descubra como colocar o Reino de Deus em primeiro lugar em suas finanças abre portas para uma provisão que vai além da compreensão humana.</p>
+                </div>
+                <div class="teaching-card">
+                    <h4>Libertando-se da Ansiedade Financeira</h4>
+                    <p>Entregue suas preocupações financeiras a Deus e experimente a liberdade de confiar Nele como seu provedor, vivendo sem o peso da ansiedade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonies" class="section bg-creamy-white">
+        <div class="container text-center">
+            <h2>Vozes da Fé: Histórias de Transformação</h2>
+            <p>Reflexões inspiradas em vidas que priorizaram o Eterno sobre o efêmero.</p>
+
+            <div class="testimonies-grid">
+                <div class="testimony-card">
+                    <p>"A história de Zaqueu nos mostra que a verdadeira transformação começa no coração, não na carteira. Quando Deus toca, as prioridades se invertem e a generosidade flui."</p>
+                    <span>— Reflexão Bíblica</span>
+                </div>
+                <div class="testimony-card">
+                    <p>"O apóstolo Paulo, mesmo em escassez, ensinou o segredo do contentamento. Sua vida é um testemunho de que a alegria não reside na abundância, mas na suficiência de Cristo."</p>
+                    <span>— Sabedoria Apostólica</span>
+                </div>
+                <div class="testimony-card">
+                    <p>"O amor ao dinheiro é a raiz de todos os males. Esta verdade, tão antiga quanto as Escrituras, ecoa em cada vida que se liberta de suas amarras para abraçar a verdadeira riqueza em Deus."</p>
+                    <span>— 1 Timóteo 6:10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="what-youll-find" class="section bg-deep-blue">
+        <div class="container find-grid">
+            <div class="find-list">
+                <h2 class="text-light">O Que Você Encontrará Nesta Jornada</h2>
+                <p class="text-light">Ao mergulhar nestes ensinamentos, você será guiado a:</p>
+                <ol>
+                    <li>
+                        <p><strong>Clareza sobre o propósito do dinheiro:</strong> Entenda o papel do dinheiro na perspectiva divina e como usá-lo para a glória de Deus.</p>
+                    </li>
+                    <li>
+                        <p><strong>Estratégias para uma vida financeira alinhada à fé:</strong> Descubra princípios bíblicos práticos para gerenciar seus recursos com sabedoria e integridade.</p>
+                    </li>
+                    <li>
+                        <p><strong>Paz e liberdade da escravidão material:</strong> Liberte-se da ansiedade e do medo que o dinheiro pode gerar, encontrando descanso na provisão de Deus.</p>
+                    </li>
+                    <li>
+                        <p><strong>Um caminho para a verdadeira prosperidade:</strong> Compreenda que a prosperidade vai além do financeiro, abrangendo todas as áreas da vida quando Deus é o centro.</p>
+                    </li>
+                    <li>
+                        <p><strong>Um coração mais generoso e grato:</strong> Desenvolva um espírito de doação e gratidão, experimentando a alegria de abençoar e ser abençoado.</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="spiritual-card">
+                <h3>Sua Riqueza Está Onde Seu Coração Está</h3>
+                <p>Este é um convite para realinhar seu coração, suas prioridades e suas finanças com o Criador. A verdadeira abundância não está no que você acumula, mas no que você se torna em Cristo.</p>
+                <p>Permita que a Palavra de Deus transforme sua visão sobre o dinheiro e revele um caminho de paz e propósito.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>O Tempo É Agora: Encontre Sua Verdadeira Riqueza</h2>
+            <p>Se você sente que o dinheiro está consumindo seu coração, ou que a busca material tem ofuscado sua fé, é hora de redescobrir as prioridades eternas. Este é um convite para voltar ao fundamento sólido — Deus.</p>
+            <a href="#hero" class="cta-button">Dar o Primeiro Passo em Fé</a>
+            <div class="blessing-verse">
+                <p>"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei."</p>
+                <span>Mateus 11:28</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="gold-text">Soli Deo Gloria</p>
+            <p class="teal-text">Feito com fé, para alimentar a sua.</p>
+            <p>&copy; <span id="current-year"></span>. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Navbar Glassmorphism on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Reveal-on-scroll (IntersectionObserver)
+        const sections = document.querySelectorAll('.section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
